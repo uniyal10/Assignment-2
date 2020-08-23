@@ -10,7 +10,6 @@ fs.readFile("C:/Users/Sudhanshu/Desktop/typescript backend/src/controllers/data.
   for (let i = 0; i < d.length; i++) {
     USERS.push(d[i])
   }
-  console.log(USERS)
 })
 
 export const createTodo: RequestHandler = (req, res, next) => {
@@ -25,6 +24,7 @@ export const getData: RequestHandler = (req, res) => {
 }
 
 export const updateUser: RequestHandler<{ id: string }> = (req, res) => {
+  console.log(req.body)
   const userId = req.params.id
   const firstName = req.body.firstName
   const middleName = req.body.middleName

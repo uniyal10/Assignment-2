@@ -7,7 +7,7 @@ router.post("/", createTodo)
 
 router.get("/", getData)
 
-router.patch("/:id", updateUser)
+router.post("/:id", updateUser)
 
 router.delete("/:id", deleteUser)
 

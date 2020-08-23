@@ -14,7 +14,6 @@ fs_1.default.readFile("C:/Users/Sudhanshu/Desktop/typescript backend/src/control
     for (let i = 0; i < d.length; i++) {
         USERS.push(d[i]);
     }
-    console.log(USERS);
 });
 exports.createTodo = (req, res, next) => {
     // const text = req.body.text
@@ -26,6 +25,7 @@ exports.getData = (req, res) => {
     res.json(USERS);
 };
 exports.updateUser = (req, res) => {
+    console.log(req.body);
     const userId = req.params.id;
     const firstName = req.body.firstName;
     const middleName = req.body.middleName;
