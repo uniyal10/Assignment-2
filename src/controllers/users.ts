@@ -1,5 +1,5 @@
 import { RequestHandler } from "express"
-import { User } from "../models/todo"
+import { User } from "../models/user"
 import fs from "fs"
 
 const USERS: User[] = []
