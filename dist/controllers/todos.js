@@ -3,39 +3,50 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.deleteTodo = exports.updateTodo = exports.getData = exports.createTodo = void 0;
+exports.deleteUser = exports.updateUser = exports.getData = exports.createTodo = void 0;
 const todo_1 = require("../models/todo");
 const fs_1 = __importDefault(require("fs"));
-const TODOS = [];
+const USERS = [];
+fs_1.default.readFile("C:/Users/Sudhanshu/Desktop/typescript backend/src/controllers/data.json", (err, data) => {
+    if (err)
+        console.log(err);
+    const d = JSON.parse(data.toString());
+    for (let i = 0; i < d.length; i++) {
+        USERS.push(d[i]);
+    }
+    console.log(USERS);
+});
 exports.createTodo = (req, res, next) => {
-    const text = req.body.text;
-    const newTodo = new todo_1.Todo(Math.random().toString(), text);
-    TODOS.push(newTodo);
-    res.status(201).json({ message: "Created the todo.", createedTodo: newTodo });
+    // const text = req.body.text
+    // const newTodo = new User(Math.random().toString(), text)
+    // USERS.push(newTodo)
+    // res.status(201).json({ message: "Created the todo.", createedTodo: newTodo })
 };
 exports.getData = (req, res) => {
-    fs_1.default.readFile("C:/Users/Sudhanshu/Desktop/typescript backend/src/controllers/data.json", (err, data) => {
-        if (err)
-            console.log(err);
-        res.json(JSON.parse(data.toString()));
-    });
+    res.json(USERS);
 };
-exports.updateTodo = (req, res) => {
-    const todoId = req.params.id;
-    const updatedText = req.body.text;
-    const todoIndex = TODOS.findIndex(todo => todo.id === todoId);
-    if (todoIndex < 0) {
-        throw new Error("could not find todo!");
+exports.updateUser = (req, res) => {
+    const userId = req.params.id;
+    const firstName = req.body.firstName;
+    const middleName = req.body.middleName;
+    const lastName = req.body.lastName;
+    const email = req.body.email;
+    const phoneNumber = req.body.phoneNumber;
+    const role = req.body.role;
+    const address = req.body.address;
+    const userIndex = USERS.findIndex(todo => todo.id === userId);
+    if (userIndex < 0) {
+        throw new Error("could not find user!");
     }
-    TODOS[todoIndex] = new todo_1.Todo(TODOS[todoIndex].id, updatedText);
-    res.json({ message: "updated", updatedTodo: TODOS[todoIndex] });
+    USERS[userIndex] = new todo_1.User(USERS[userIndex].id, firstName, middleName, lastName, email, phoneNumber, role, address);
+    res.json({ message: "updated", updatedTodo: USERS[userIndex] });
 };
-exports.deleteTodo = (req, res) => {
-    const todoId = req.params.id;
-    const todoIndex = TODOS.findIndex(todo => todo.id === todoId);
-    if (todoIndex < 0) {
-        throw new Error("could not find todo!");
+exports.deleteUser = (req, res) => {
+    const userId = req.params.id;
+    const userIndex = USERS.findIndex(todo => todo.id === userId);
+    if (userIndex < 0) {
+        throw new Error("could not find user!");
     }
-    TODOS.splice(todoIndex, 1);
-    res.send({ message: "todo deleted" });
+    USERS.splice(userIndex, 1);
+    res.send({ message: "user deleted" });
 };
