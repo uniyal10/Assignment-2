@@ -14,5 +14,6 @@ app.use("/users", routes_1.default);
 app.use((err, req, res, next) => {
     res.status(500).json({ message: err.message });
 });
-//routes
+exports.default = app;
 app.listen(8080);
+//routes

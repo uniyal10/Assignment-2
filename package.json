@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon dist/app.js"
+    "start": "nodemon dist/db.js"
   },
   "author": "",
   "license": "ISC",
@@ -14,7 +14,9 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nodemon": "^1.19.4",
-    "pg": "^8.3.2"
+    "pg": "^8.3.2",
+    "sql": "^0.78.0",
+    "typescript-sql": "0.0.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.7",

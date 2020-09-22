@@ -7,5 +7,6 @@ const client = new Client({
   password: "123",
   port: 5432
 })
+
 client.connect()
 export default client

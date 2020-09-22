@@ -12,6 +12,12 @@ app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
   res.status(500).json({ message: err.message })
 })
 
-//routes
+
+
+
+export default app
 
 app.listen(8080)
+
+//routes
+
